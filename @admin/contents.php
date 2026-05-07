@@ -64,7 +64,7 @@
                         <button onclick="openModal1()" class="transition-all duration-100 ease-in-out rounded-lg border-2 border-blue-500 text-blue-500 font-semibold p-2 hover:bg-blue-500 hover:text-white">Add New Content</button>
 
                         <div id="myModal1" class="fixed inset-0 flex items-center justify-center bg-black/80 opacity-0 pointer-events-none transition-opacity duration-300">
-                            <div id="modalBox1" class="bg-gray-900 p-6 rounded-xl shadow-lg transform scale-95 transition-all duration-100 w-full max-w-md">
+                            <div id="modalBox1" class="bg-gray-900 p-6 rounded-xl shadow-lg transform scale-95 transition-all duration-100 w-3/6">
                                 <h2 class="text-lg font-semibold mb-4">Add New Content</h2>
 
                                 <form action="" method="POST">
@@ -132,14 +132,20 @@
                         
                         <button onclick="openModal2()" class="transition-all duration-100 ease-in-out rounded-lg border-2 border-blue-500 text-blue-500 font-semibold p-2 hover:bg-blue-500 hover:text-white">Add Genre</button>
 
-                        <div id="myModal2" class="fixed inset-0 flex items-center justify-center bg-black/80 opacity-0 pointer-events-none transition-opacity duration-300">
-                            <div id="modalBox2" class="bg-gray-900 p-6 rounded-xl shadow-lg transform scale-95 transition-all duration-100 w-full max-w-md">
-                                <h2 class="text-lg font-semibold mb-4">Add Genre</h2>
+                        <div id="myModal2" class="fixed inset-0 w-full flex items-center justify-center bg-black/80 opacity-0 pointer-events-none transition-opacity duration-300">
+                            <div id="modalBox2" class="bg-gray-800 p-6 rounded-xl shadow-lg transform scale-95 transition-all duration-100 w-3/6">
+                                <h2 class="text-xl font-semibold mb-4">Add Genre</h2>
+                                
+                                <form action="" method="POST" class="grid grid-cols-12 gap-4 w-full">
+                                    <div class="w-full col-span-6 text-left">
+                                        <label class="font-semibold block mb-1" for="g_name">Name: <span class="font-bold text-red-500">*</span></label>
+                                        <input class="w-full rounded-lg" type="text" name="g_name" id="g_name" placeholder="Type genre name" required>
+                                    </div>
 
-                                <form action="" method="POST">
-                                    <input type="text" name="name" placeholder="" class="">
-
-                                    <button type="submit" class="">Submit</button>
+                                    <div class="w-full col-span-6 text-left">
+                                        <label class="font-semibold block mb-1" for="g_slug">Slug: <span class="font-bold text-red-500">*</span></label>
+                                        <input class="w-full rounded-lg" type="text" name="g_slug" id="g_slug" placeholder="Type genre slug" required>
+                                    </div>
                                 </form>
 
                                 <button onclick="closeModal2()" class="">Close</button>
@@ -202,7 +208,7 @@
                         <button onclick="openModal3()" class="transition-all duration-100 ease-in-out rounded-lg border-2 border-blue-500 text-blue-500 font-semibold p-2 hover:bg-blue-500 hover:text-white">Add Category</button>
 
                         <div id="myModal3" class="fixed inset-0 flex items-center justify-center bg-black/80 opacity-0 pointer-events-none transition-opacity duration-300">
-                            <div id="modalBox3" class="bg-gray-900 p-6 rounded-xl shadow-lg transform scale-95 transition-all duration-100 w-full max-w-md">
+                            <div id="modalBox3" class="bg-gray-900 p-6 rounded-xl shadow-lg transform scale-95 transition-all duration-100 w-full w-3/6">
                                 <h2 class="text-lg font-semibold mb-4">Add Category</h2>
 
                                 <form action="" method="POST">
@@ -271,7 +277,7 @@
                         <button onclick="openModal4()" class="transition-all duration-100 ease-in-out rounded-lg border-2 border-blue-500 text-blue-500 font-semibold p-2 hover:bg-blue-500 hover:text-white">Add Quality</button>
 
                         <div id="myModal4" class="fixed inset-0 flex items-center justify-center bg-black/80 opacity-0 pointer-events-none transition-opacity duration-300">
-                            <div id="modalBox4" class="bg-gray-900 p-6 rounded-xl shadow-lg transform scale-95 transition-all duration-100 w-full max-w-md">
+                            <div id="modalBox4" class="bg-gray-900 p-6 rounded-xl shadow-lg transform scale-95 transition-all duration-100 w-full w-3/6">
                                 <h2 class="text-lg font-semibold mb-4">Add Quality</h2>
 
                                 <form action="" method="POST">
