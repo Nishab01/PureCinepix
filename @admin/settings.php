@@ -35,29 +35,29 @@
 
     <div class="w-full flex justify-center">
         <div class="w-full max-w-screen-xl flex flex-row gap-2 p-2">
-            <div class="w-1/6 h-max rounded-lg p-2 bg-black/20 border-2 border-white/60 shadow-lg">
+            <div class="w-1/6 h-max rounded-xl p-2 bg-black/20 border-2 border-white/60 shadow-lg">
                 <div class="text-left space-y-1 font-semibold flex flex-col">
-                    <a href="#" class="select_btn rounded-lg transition-all duration-100 ease-in-out p-2 hover:bg-blue-500 space-x-2 flex flex-row items-center justify-start bg-blue-500" id="select_btn_1">
+                    <a href="#" class="select_btn rounded-xl transition-all duration-100 ease-in-out p-2 hover:bg-blue-500 space-x-2 flex flex-row items-center justify-start bg-blue-500" id="select_btn_1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-monitor-cog-icon lucide-monitor-cog"><path d="M12 17v4"/><path d="m14.305 7.53.923-.382"/><path d="m15.228 4.852-.923-.383"/><path d="m16.852 3.228-.383-.924"/><path d="m16.852 8.772-.383.923"/><path d="m19.148 3.228.383-.924"/><path d="m19.53 9.696-.382-.924"/><path d="m20.772 4.852.924-.383"/><path d="m20.772 7.148.924.383"/><path d="M22 13v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"/><path d="M8 21h8"/><circle cx="18" cy="6" r="3"/></svg>
                         <span>Display Content</span>
                     </a>
 
-                    <a href="#" class="select_btn rounded-lg transition-all duration-100 ease-in-out p-2 hover:bg-blue-500 space-x-2 flex flex-row items-center justify-start" id="select_btn_2">
+                    <a href="#" class="select_btn rounded-xl transition-all duration-100 ease-in-out p-2 hover:bg-blue-500 space-x-2 flex flex-row items-center justify-start" id="select_btn_2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail-icon lucide-mail"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
                         <span>Email & Contact</span>
                     </a>
 
-                    <a href="#" class="select_btn rounded-lg transition-all duration-100 ease-in-out p-2 hover:bg-blue-500 space-x-2 flex flex-row items-center justify-start" id="select_btn_3">
+                    <a href="#" class="select_btn rounded-xl transition-all duration-100 ease-in-out p-2 hover:bg-blue-500 space-x-2 flex flex-row items-center justify-start" id="select_btn_3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-fading-plus-icon lucide-circle-fading-plus"><path d="M12 2a10 10 0 0 1 7.38 16.75"/><path d="M12 8v8"/><path d="M16 12H8"/><path d="M2.5 8.875a10 10 0 0 0-.5 3"/><path d="M2.83 16a10 10 0 0 0 2.43 3.4"/><path d="M4.636 5.235a10 10 0 0 1 .891-.857"/><path d="M8.644 21.42a10 10 0 0 0 7.631-.38"/></svg>
                         <span>Social Media</span>
                     </a>
 
-                    <a href="#" class="select_btn rounded-lg transition-all duration-100 ease-in-out p-2 hover:bg-blue-500 space-x-2 flex flex-row items-center justify-start" id="select_btn_4">
+                    <a href="#" class="select_btn rounded-xl transition-all duration-100 ease-in-out p-2 hover:bg-blue-500 space-x-2 flex flex-row items-center justify-start" id="select_btn_4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-bottom-dashed-icon lucide-panel-bottom-dashed"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M14 15h1"/><path d="M19 15h2"/><path d="M3 15h2"/><path d="M9 15h1"/></svg>
                         <span>Footer</span>
                     </a>
 
-                    <a href="#" class="select_btn rounded-lg transition-all duration-100 ease-in-out p-2 hover:bg-blue-500 space-x-2 flex flex-row items-center justify-start" id="select_btn_5">
+                    <a href="#" class="select_btn rounded-xl transition-all duration-100 ease-in-out p-2 hover:bg-blue-500 space-x-2 flex flex-row items-center justify-start" id="select_btn_5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-ellipsis-icon lucide-circle-ellipsis"><circle cx="12" cy="12" r="10"/><path d="M17 12h.01"/><path d="M12 12h.01"/><path d="M7 12h.01"/></svg>
                         <span>Miscellaneous</span>
                     </a>
@@ -65,7 +65,7 @@
             </div>
 
             <div class="w-5/6 h-max shadow-lg">
-                <form action="./updatesettings.php" method="POST" class="rounded-lg p-4 bg-black/20 border-2 border-white/60 gap-4 grid">
+                <form action="./updatesettings.php" method="POST" class="rounded-xl p-4 bg-black/20 border-2 border-white/60 gap-4 grid">
                     <div class="exp_div w-full grid grid-cols-12 gap-4" id="div_1">
                         <?php
                             while($display = $run1->fetch_assoc()){
@@ -73,7 +73,7 @@
                                     ?>
                                     <div class="w-full col-span-6 text-left">
                                         <label for="trending_count" class="font-semibold">Trending Content Count: <span class="font-bold text-red-500">*</span></label>
-                                        <input class="w-full bg-white text-black rounded-lg" type="number" name="trending_count" id="trending_count" value="<?php echo $display['value']; ?>" required>
+                                        <input class="w-full bg-white text-black rounded-xl" type="number" name="trending_count" id="trending_count" value="<?php echo $display['value']; ?>" required>
                                     </div>
                                     <?php
                                 }
@@ -82,7 +82,7 @@
                                     ?>
                                     <div class="w-full col-span-6 text-left">
                                         <label for="featured_count" class="font-semibold">Featured Content Count: <span class="font-bold text-red-500">*</span></label>
-                                        <input class="w-full bg-white text-black rounded-lg" type="number" name="featured_count" id="featured_count" value="<?php echo $display['value']; ?>" required>
+                                        <input class="w-full bg-white text-black rounded-xl" type="number" name="featured_count" id="featured_count" value="<?php echo $display['value']; ?>" required>
                                     </div>
                                     <?php
                                 }
@@ -91,7 +91,7 @@
                                     ?>
                                     <div class="w-full col-span-6 text-left">
                                         <label for="latest_count" class="font-semibold">Latest Content Count: <span class="font-bold text-red-500">*</span></label>
-                                        <input class="w-full bg-white text-black rounded-lg" type="number" name="latest_count" id="latest_count" value="<?php echo $display['value']; ?>" required>
+                                        <input class="w-full bg-white text-black rounded-xl" type="number" name="latest_count" id="latest_count" value="<?php echo $display['value']; ?>" required>
                                     </div>
                                     <?php
                                 }
@@ -100,7 +100,7 @@
                                     ?>
                                     <div class="w-full col-span-6 text-left">
                                         <label for="genrewise_count" class="font-semibold">Genre-wise Content Count: <span class="font-bold text-red-500">*</span></label>
-                                        <input class="w-full bg-white text-black rounded-lg" type="number" name="genrewise_count" id="genrewise_count" value="<?php echo $display['value']; ?>" required>
+                                        <input class="w-full bg-white text-black rounded-xl" type="number" name="genrewise_count" id="genrewise_count" value="<?php echo $display['value']; ?>" required>
                                     </div>
                                     <?php
                                 }
@@ -115,7 +115,7 @@
                                     ?>
                                     <div class="w-full col-span-12 text-left">
                                         <label for="website_email" class="font-semibold">Website Email Address: <span class="font-bold text-red-500">*</span></label>
-                                        <input class="w-full bg-white text-black rounded-lg" type="text" name="website_email" id="website_email" value="<?php echo $contact['value']; ?>" required>
+                                        <input class="w-full bg-white text-black rounded-xl" type="text" name="website_email" id="website_email" value="<?php echo $contact['value']; ?>" required>
                                     </div>
                                     <?php
                                 }
@@ -124,7 +124,7 @@
                                     ?>
                                     <div class="w-full col-span-12 text-left">
                                         <label for="website_about" class="font-semibold">Website About:</label>
-                                        <textarea class="w-full bg-white text-black rounded-lg" name="website_about" id="website_about"><?php echo $contact['value']; ?></textarea>
+                                        <textarea class="w-full bg-white text-black rounded-xl" name="website_about" id="website_about"><?php echo $contact['value']; ?></textarea>
                                     </div>
                                     <?php
                                 }
@@ -139,12 +139,12 @@
                                     ?>
                                     <div class="w-full col-span-6 text-left">
                                         <label for="facebook_url" class="font-semibold">Facebook URL:</label>
-                                        <input class="w-full bg-white text-black rounded-lg" type="text" name="facebook_url" id="facebook_url" value="<?php echo $social['value']; ?>">
+                                        <input class="w-full bg-white text-black rounded-xl" type="text" name="facebook_url" id="facebook_url" value="<?php echo $social['value']; ?>">
                                     </div>
 
                                     <div class="w-full col-span-6 text-left">
                                         <label for="facebook_icon" class="font-semibold">Facebook SVG Icon:</label>
-                                        <input class="w-full bg-white text-black rounded-lg" type="text" name="facebook_icon" id="facebook_icon" value="<?php echo $social['icon']; ?>">
+                                        <input class="w-full bg-white text-black rounded-xl" type="text" name="facebook_icon" id="facebook_icon" value="<?php echo $social['icon']; ?>">
                                     </div>
                                     <?php
                                 }
@@ -153,12 +153,12 @@
                                     ?>
                                     <div class="w-full col-span-6 text-left">
                                         <label for="instagram_url" class="font-semibold">Instagram URL:</label>
-                                        <input class="w-full bg-white text-black rounded-lg" type="text" name="instagram_url" id="instagram_url" value="<?php echo $social['value']; ?>">
+                                        <input class="w-full bg-white text-black rounded-xl" type="text" name="instagram_url" id="instagram_url" value="<?php echo $social['value']; ?>">
                                     </div>
 
                                     <div class="w-full col-span-6 text-left">
                                         <label for="instagram_icon" class="font-semibold">Instagram SVG Icon:</label>
-                                        <input class="w-full bg-white text-black rounded-lg" type="text" name="instagram_icon" id="instagram_icon" value="<?php echo $social['icon']; ?>">
+                                        <input class="w-full bg-white text-black rounded-xl" type="text" name="instagram_icon" id="instagram_icon" value="<?php echo $social['icon']; ?>">
                                     </div>
                                     <?php
                                 }
@@ -173,7 +173,7 @@
                                     ?>
                                     <div class="w-full col-span-12 text-left">
                                         <label for="copyright_text" class="font-semibold">Copyright Text: <span class="font-bold text-red-500">*</span></label>
-                                        <textarea class="w-full bg-white text-black rounded-lg" name="copyright_text" id="copyright_text" required><?php echo $footer['value']; ?></textarea>
+                                        <textarea class="w-full bg-white text-black rounded-xl" name="copyright_text" id="copyright_text" required><?php echo $footer['value']; ?></textarea>
                                     </div>
                                     <?php
                                 }
@@ -182,7 +182,7 @@
                                     ?>
                                     <div class="w-full col-span-12 text-left">
                                         <label for="footer_text" class="font-semibold">Footer Text:</label>
-                                        <textarea class="w-full bg-white text-black rounded-lg" name="footer_text" id="footer_text"><?php echo $footer['value']; ?></textarea>
+                                        <textarea class="w-full bg-white text-black rounded-xl" name="footer_text" id="footer_text"><?php echo $footer['value']; ?></textarea>
                                     </div>
                                     <?php
                                 }
@@ -191,7 +191,7 @@
                                     ?>
                                     <div class="w-full col-span-12 text-left">
                                         <label for="footer_description" class="font-semibold">Footer Description:</label>
-                                        <textarea class="w-full bg-white text-black rounded-lg" name="footer_description" id="footer_description"><?php echo $footer['value']; ?></textarea>
+                                        <textarea class="w-full bg-white text-black rounded-xl" name="footer_description" id="footer_description"><?php echo $footer['value']; ?></textarea>
                                     </div>
                                     <?php
                                 }
@@ -253,7 +253,7 @@
                     </div>
 
                     <div class="w-full grid grid-cols-12 gap-4">
-                        <input class="rounded-lg bg-blue-500 text-white px-4 py-2 font-bold" type="submit" name="save" id="save" value="Save">
+                        <input class="cursor-pointer rounded-xl bg-blue-500 text-white px-4 py-2 font-bold" type="submit" name="save" id="save" value="Save">
                     </div>
                 </form>
             </div>

@@ -17,8 +17,8 @@
 <body>
     <?php
         include './app.php';
-        date_default_timezone_set('Asia/Dhaka');
-        $conn = new mysqli('localhost', 'root', '', 'purecinepix');
+        // date_default_timezone_set('Asia/Dhaka');
+        // $conn = new mysqli('localhost', 'root', '', 'purecinepix');
 
         $email = $_POST["email"];
         $password = fastEncrypt($_POST["password"], $key, $iv);

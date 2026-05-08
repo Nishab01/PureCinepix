@@ -5,6 +5,8 @@
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
   color: white;
+  text-decoration: none;
+  list-style-type: none;
 }
 body {
   height: 100vh;
@@ -77,4 +79,12 @@ body {
     0 0 2px #494949,
     0 0 4px #000000,
     0 0 8px #494949;
+}
+
+#mobileSidebar::-webkit-scrollbar {
+  width: 0;
+}
+
+#mobileSidebar {
+  scrollbar-width: none;
 }

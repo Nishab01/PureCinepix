@@ -18,13 +18,13 @@
     <?php include './app.php'; ?>
 
     <div class="h-screen flex items-center justify-center">
-        <div class="px-4 max-w-screen-xl flex items-stretch justify-center md:flex-row rounded-lg gap-2">
+        <div class="px-4 max-w-screen-xl flex items-stretch justify-center md:flex-row rounded-xl gap-2">
             <div class="p-2 hidden md:block w-1/2 flex justify-center items-center">
                 <!-- banner -->
                 <img src="./img/signin.webp" alt="" class="object-contain">
             </div>
 
-            <div class="p-2 lg:w-1/2 md:w-1/2 bg-gray-800/50 rounded-lg shadow-lg flex justify-center items-center">
+            <div class="p-2 lg:w-1/2 md:w-1/2 bg-gray-800/50 rounded-xl shadow-lg flex justify-center items-center">
                 <form action="./checking.php" method="POST" class="w-full my-2 text-center flex flex-col items-center justify-center">
                     <!-- <p class="text-2xl font-bold mb-2">Create Your Account</p> -->
                     <a href="./signin.php" class="text-2xl font-bold">Welcome</a>
@@ -33,13 +33,13 @@
                     <div class="my-4 text-left font-semibold w-5/6 lg:w-4/6 md:w-4/6 space-y-4">
                         <div class="space-y-1">
                             <label class="w-full" for="email">Email:</label>
-                            <input class="w-full rounded-lg bg-gray-800 border-2 border-blue-500 font-normal" type="email" name="email" id="email" placeholder="Enter your email address" required>
+                            <input class="w-full rounded-xl bg-gray-800 border-2 border-blue-500 font-normal" type="email" name="email" id="email" placeholder="Enter your email address" required>
                         </div>
 
                         <div class="space-y-1">
                             <label class="w-full" for="password">Password:</label>
                             <div class="relative w-full">
-                                <input class="w-full rounded-lg bg-gray-800 border-2 border-blue-500 font-normal" type="password" name="password" id="password" placeholder="Enter a password" required>
+                                <input class="w-full rounded-xl bg-gray-800 border-2 border-blue-500 font-normal" type="password" name="password" id="password" placeholder="Enter a password" required>
                                 
                                 <button type="button" onclick="togglePassword('password', 'eyeIcon')" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#00AAFF] transition-colors">
                                     <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="space-y-1 text-center">
-                            <input class="p-2 transition-all duration-100 w-full cursor-pointer bg-blue-500 hover:bg-blue-700 hover:shadow-lg rounded-lg font-semibold text-base" type="submit" name="signin" id="signin" value="Sign In">
+                            <input class="p-2 transition-all duration-100 w-full cursor-pointer bg-blue-500 hover:bg-blue-700 hover:shadow-lg rounded-xl font-semibold text-base" type="submit" name="signin" id="signin" value="Sign In">
                         </div>
                     </div>
 

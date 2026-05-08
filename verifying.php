@@ -21,7 +21,7 @@
     <?php
         include './app.php';
 
-        $conn = new mysqli('localhost', 'root', '', 'purecinepix');
+        // $conn = new mysqli('localhost', 'root', '', 'purecinepix');
         
         // Generate OTP 
         function generateopt($length = 6) {
@@ -89,13 +89,13 @@
         });
     </script>
     
-    <div class="px-4 max-w-screen-xl flex flex-col items-center justify-center md:flex-row rounded-lg gap-2">
+    <div class="px-4 max-w-screen-xl flex flex-col items-center justify-center md:flex-row rounded-xl gap-2">
         <div class="hidden md:block w-1/2">
             <!-- banner -->
             <img src="./img/otp.webp" alt="" class="object-contain">
         </div>
 
-        <div class="lg:w-1/2 md:w-1/2 bg-gray-800/50 rounded-lg shadow-lg">
+        <div class="lg:w-1/2 md:w-1/2 bg-gray-800/50 rounded-xl shadow-lg">
             <form action="./registering.php" method="POST" class="my-4 text-center flex flex-col items-center justify-center">
                 <p class="text-2xl font-bold mb-2">Verification</p>
 
@@ -104,17 +104,17 @@
                 <div class="my-4 text-left font-semibold w-5/6 lg:w-4/6 md:w-4/6 space-y-4">
                     <div class="space-y-1">
                         <label class="w-full" for="opt">Code:</label>
-                        <input class="w-full rounded-lg bg-gray-800 border-2 border-blue-500 font-normal" type="text" name="opt" id="opt" placeholder="Enter verification code" required>
+                        <input class="w-full rounded-xl bg-gray-800 border-2 border-blue-500 font-normal" type="text" name="opt" id="opt" placeholder="Enter verification code" required>
 
                         <span class="font-normal text-xs text-gray-400">A verification code was sent to your email.</span>
 
-                        <input class="w-full rounded-lg bg-gray-800 border-2 border-blue-500 font-normal" type="text" name="emailvalue" id="emailvalue" value="<?php echo $email; ?>" required readonly hidden>
+                        <input class="w-full rounded-xl bg-gray-800 border-2 border-blue-500 font-normal" type="text" name="emailvalue" id="emailvalue" value="<?php echo $email; ?>" required readonly hidden>
 
-                        <input class="w-full rounded-lg bg-gray-800 border-2 border-blue-500 font-normal" type="text" name="passvalue" id="passvalue" value="<?php echo $password; ?>" required readonly hidden>
+                        <input class="w-full rounded-xl bg-gray-800 border-2 border-blue-500 font-normal" type="text" name="passvalue" id="passvalue" value="<?php echo $password; ?>" required readonly hidden>
                     </div>
 
                     <div class="space-y-1 text-center">
-                        <input class="p-2 transition-all duration-100 w-full cursor-pointer bg-blue-500 hover:bg-blue-700 hover:shadow-lg rounded-lg font-semibold text-base" type="submit" name="verify" id="verify" value="Verify">
+                        <input class="p-2 transition-all duration-100 w-full cursor-pointer bg-blue-500 hover:bg-blue-700 hover:shadow-lg rounded-xl font-semibold text-base" type="submit" name="verify" id="verify" value="Verify">
                     </div>
                 </div>
             </form>

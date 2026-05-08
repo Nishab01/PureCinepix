@@ -18,7 +18,7 @@
     <?php 
         include './app.php';
 
-        $conn = new mysqli('localhost', 'root', '', 'purecinepix');
+        // $conn = new mysqli('localhost', 'root', '', 'purecinepix');
 
         $otp = $_POST["opt"];
         $emailvalue = $_POST["emailvalue"];

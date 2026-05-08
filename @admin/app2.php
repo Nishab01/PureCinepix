@@ -57,13 +57,20 @@
     <div class="w-full bg-black/50">
         <nav class="bg-neutral-primary">
             <div class="flex flex-wrap justify-between items-center mx-auto px-4 max-w-screen-xl py-4">
-                <a href="./" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="../favicon/web-app-manifest-192x192.png" class="lg:h-12 md:h-12 h-8" alt="PureCinepix" />
+                <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <!-- <img src="../favicon/web-app-manifest-192x192.png" class="lg:h-12 md:h-12 h-8" alt="PureCinepix" /> -->
                     <div class="space-x-2">
-                        <span class="self-center lg:text-2xl md:text-2xl text-xl text-heading font-bold whitespace-nowrap">PureCinepix</span>
-                        <span class="self-center text-sm text-heading font-bold whitespace-nowrap text-blue-200">Admin Panel</span>
+                        <a href="./" class="flex items-center gap-2 group">
+                            <img src="../favicon/web-app-manifest-192x192.png" class="h-12 transition-transform duration-300 group-hover:scale-105" alt="PureCinepix">
+
+                            <div class="flex flex-col leading-none">
+                                <span class="text-2xl font-black tracking-wide text-white">PURE<span class="text-blue-500">CINEPIX</span></span>
+
+                                <span class="text-mg tracking-[0.3em] text-blue-400">Admin Panel</span>
+                            </div>
+                        </a>
                     </div>
-                </a>
+                </div>
 
                 <div class="flex flex-row items-center space-x-2 rtl:space-x-reverse">
                     <div class="px-4 flex flex-col gap-0 text-right border-r-2 border-white/60">
@@ -79,7 +86,7 @@
                         ?></p>
                     </div>
 
-                    <a href="../signout.php" class="p-2 transition-all duration-100 ease-in-out rounded-lg text-base font-semibold border-transparent hover:text-white hover:bg-red-500">Sign Out</a>
+                    <a href="../signout.php" class="p-2 transition-all duration-100 ease-in-out rounded-xl text-base font-semibold border-transparent hover:text-white hover:bg-red-500">Sign Out</a>
                 </div>
             </div>
         </nav>
@@ -87,7 +94,7 @@
         <nav class="bg-neutral-secondary-soft border-y-2 border-white/60">
             <div class="px-4 max-w-screen-xl px-4 py-3 mx-auto">
                 <div class="flex items-center">
-                    <ul class="flex flex-row mt-0 space-x-4 rtl:space-x-reverse font-semibold">
+                    <ul class="flex flex-row mt-0 space-x-2 rtl:space-x-reverse text-sm font-semibold">
                         <li>
                             <a href="../" target="_blank" class="px-2 py-1 transition-all duration-100 ease-in-out flex flex-row items-center gap-2 border-b-4 border-transparent hover:border-blue-500" aria-current="page">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>

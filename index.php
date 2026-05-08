@@ -17,10 +17,8 @@
 <body>
     <?php include './app.php'; ?>
     
-    <div class="h-screen p-2 flex items-center justify-center">
-        <div class="max-w-screen-xl flex flex-row w-full gap-2 border">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime enim aut, fugit voluptatum impedit sit odio architecto quam ratione beatae, distinctio amet necessitatibus nobis. Quaerat voluptas in harum sequi iste.</p>
-        </div>
+    <div class="h-screen p-2 flex items-start justify-center content-start">
+        <div class="max-w-screen-xl w-full gap-2 border p-2"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, ullam facere maiores delectus, tenetur cumque sequi enim vitae, quibusdam veritatis quidem aliquid eligendi laudantium molestiae quisquam quam ea quos a?</div>
     </div>
 </body>
 </html>
