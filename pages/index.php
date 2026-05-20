@@ -1,6 +1,5 @@
 <?php
 require_once '../config/config.php';
-// require_once '../modules/content.php';
 include '../includes/header.php';
 ?>
 
