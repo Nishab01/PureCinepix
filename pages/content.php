@@ -1,5 +1,7 @@
 <?php
+
 require_once '../config/config.php';
+require_once '../config/constants.php';
 
 $id = $_GET['id'] ?? 0;
 
@@ -17,6 +19,9 @@ $content = $res->fetch_assoc();
 $title = htmlspecialchars($content['title']);
 $description = $content['description'] ?? '';
 $type = $content['type'] ?? '';
+
+$rating = $content['tmdb_rating'] ?? null;
+$trailer = $content['tmdb_trailer'] ?? null;
 
 $release = $content['release_date'] ?? '';
 $last = $content['last_date'] ?? '';
@@ -36,41 +41,32 @@ $genres = $conn->query("
     WHERE cg.content_id = $id ORDER BY name ASC
 ");
 
-// TMDB RATING
-$rating = null;
-
-if (!empty($content['tmdb_id'])) {
-    $api_key = TMDB_API_KEY;
-
-    $url = ($type === 'movie')
-        ? "https://api.themoviedb.org/3/movie/{$content['tmdb_id']}?api_key=$api_key&append_to_response=videos"
-        : "https://api.themoviedb.org/3/tv/{$content['tmdb_id']}?api_key=$api_key&append_to_response=videos";
-
-    $response = @file_get_contents($url);
-
-    if ($response) {
-        $tmdb = json_decode($response, true);
-        $rating = $tmdb['vote_average'] ?? null;
-        $trailer = null;
-
-        if (!empty($tmdb['videos']['results'])) {
-            foreach ($tmdb['videos']['results'] as $video) {
-                if ($video['type'] === 'Trailer' && $video['site'] === 'YouTube') {
-                    $trailer = $video['key'];
-                    break; // first trailer = latest usually
-                }
-            }
-        }
-    }
-}
+$user_id = $_SESSION['user_id'] ?? 0;
 
 $isInWatchlist = false;
 
+if (isset($_SESSION[SESSION_USER])) {
+
+    $user_id = $_SESSION[SESSION_USER]['id'];
+
+    $stmt = $conn->prepare("
+        SELECT 1 FROM watchlist 
+        WHERE user_id = ? AND content_id = ?
+    ");
+
+    $stmt->bind_param("ii", $user_id, $id);
+    $stmt->execute();
+    $res = $stmt->get_result();
+
+    $isInWatchlist = $res->num_rows > 0;
+}
+
+$pagename = $title;
 include '../includes/header.php';
 ?>
 
 <!-- BACKDROP -->
-<div class="w-full h-[20vh] md:h-[60vh] relative">
+<div class="w-full h-[50vh] md:h-[96vh] relative">
     <img src="<?= $backdrop ?: 'https://images.pexels.com/photos/29508640/pexels-photo-29508640.jpeg' ?>"
          class="w-full h-full object-cover">
 
@@ -78,7 +74,7 @@ include '../includes/header.php';
 </div>
 
 <!-- MAIN -->
-<div class="max-w-[1400px] mx-auto px-4 -mt-16 md:-mt-40 relative z-10">
+<div class="max-w-[1400px] mx-auto px-4 -mt-[350px] md:-mt-[500px] relative z-10">
 
 <div class="bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6">
 
@@ -112,7 +108,7 @@ include '../includes/header.php';
     <!-- TMDB RATING -->
     <span class="flex items-center gap-1 bg-white/10 text-white/60 px-2 py-1 rounded-md text-sm">
         <span class="text-yellow-400">★</span>
-        <?= $rating ? number_format($rating, 1) : 'N/A' ?>
+        <?= ($rating && $rating > 0) ? number_format($rating, 1) : 'N/A' ?>
     </span>
 
     <span class="hidden md:block text-white/60">•</span>
@@ -142,12 +138,25 @@ include '../includes/header.php';
 </p>
 
 <!-- WATCHLIST -->
-<button id="watchlistBtn"
-    data-movie-id="<?= $id ?>"
+<!-- <button id="watchlistBtn"
+    data-id="<?= $id ?>"
     data-state="<?= $isInWatchlist ? 'added' : 'not-added' ?>"
     class="bg-white/10 hover:bg-white/20 active:scale-95 px-5 py-2 rounded-lg font-semibold border border-white/10 backdrop-blur-md transition-all duration-150 hover:shadow-lg hover:shadow-blue-500/20 text-sm transition">
 
     <?= $isInWatchlist ? '✓ In Watchlist' : '+ Add to Watchlist' ?>
+
+</button> -->
+<button id="watchlistBtn"
+    data-id="<?= $id ?>"
+    data-state="<?= $isInWatchlist ? 'added' : 'not-added' ?>"
+    class="px-5 py-2 rounded-lg font-semibold border border-white/10 backdrop-blur-md text-sm transition-all duration-150
+    <?= $isInWatchlist 
+        ? 'bg-green-500/20 text-green-300 hover:shadow-lg hover:shadow-green-500/20 active:scale-95' 
+        : 'bg-white/10 text-white hover:bg-white/20 hover:shadow-lg hover:shadow-blue-500/20 active:scale-95' ?>">
+
+    <span id="watchlistText">
+        <?= $isInWatchlist ? '✓ In Watchlist' : '+ Add to Watchlist' ?>
+    </span>
 
 </button>
 
@@ -262,7 +271,7 @@ include '../includes/header.php';
 </div>
 
 <!-- TRAILER -->
-<?php if(!empty($trailer)): ?>
+<?php if (!empty($trailer) && strlen($trailer) > 5): ?>
 <div class="max-w-[1400px] mx-auto px-4 mt-4 bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6">
         <h3 class="text-xl font-semibold mb-3">Trailer</h3>
 
@@ -274,4 +283,96 @@ include '../includes/header.php';
             </iframe>
         </div>
 </div>
+<?php else: ?>
+    <div class="max-w-[1400px] mx-auto px-4 mt-4 bg-black/60 border border-white/10 rounded-2xl p-6 text-center text-white/50">
+        No trailer available
+    </div>
 <?php endif; ?>
+
+<script>
+    // function showToast(message, type = 'success') {
+    //     const toast = document.createElement('div');
+
+    //     toast.className = `
+    //         fixed bottom-5 right-5 px-4 py-2 rounded-lg text-white text-sm
+    //         ${type === 'error' ? 'bg-red-500' : 'bg-green-500'}
+    //         shadow-lg z-50 animate-fade-in
+    //     `;
+
+    //     toast.innerText = message;
+    //     document.body.appendChild(toast);
+
+    //     setTimeout(() => toast.remove(), 2500);
+    // }
+
+    const btn = document.getElementById('watchlistBtn');
+
+    btn.addEventListener('click', async () => {
+
+        const contentId = btn.dataset.id;
+        let state = btn.dataset.state;
+
+        const action = state === 'added' ? 'remove' : 'add';
+
+        // 🔄 loading state
+        btn.disabled = true;
+        btn.classList.add('opacity-60');
+
+        try {
+            const res = await fetch('../api/watchlist_api.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `content_id=${contentId}&action=${action}`
+            });
+
+            // const data = await res.json();
+            const text = await res.text();
+
+            let data;
+            try {
+                data = JSON.parse(text);
+            } catch (e) {
+                console.error("JSON ERROR:", e);
+            }
+
+            // ✅ ADD SUCCESS
+            if (data.status === 'added') {
+
+                btn.dataset.state = 'added';
+
+                btn.classList.remove('bg-white/10', 'text-white', 'hover:bg-white/20', 'hover:shadow-blue-500/20');
+                btn.classList.add('bg-green-500/20', 'text-green-300', 'hover:shadow-green-500/20');
+
+                document.getElementById('watchlistText').innerText = '✓ In Watchlist';
+
+                // showToast("Added to Watchlist");
+            }
+
+            // ✅ REMOVE SUCCESS
+            else if (data.status === 'removed') {
+
+                btn.dataset.state = 'not-added';
+
+                btn.classList.remove('bg-green-500/20', 'text-green-300', 'hover:shadow-green-500/20');
+                btn.classList.add('bg-white/10', 'text-white', 'hover:bg-white/20', 'hover:shadow-blue-500/20');
+
+                document.getElementById('watchlistText').innerText = '+ Add to Watchlist';
+
+                // showToast("Removed from Watchlist", "error");
+            }
+
+            else {
+                showToast("Something went wrong", "error");
+            }
+
+        } catch (err) {
+            console.error(err);
+            showToast("Network error", "error");
+        }
+
+        btn.disabled = false;
+        btn.classList.remove('opacity-60');
+    });
+</script>
