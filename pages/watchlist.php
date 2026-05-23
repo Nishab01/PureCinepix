@@ -3,96 +3,101 @@ $pagename = "My Watchlist";
 require_once '../config/config.php';
 require_once '../config/constants.php';
 
-// ✅ LOGIN CHECK
 if (!isset($_SESSION['user'])) {
     die("Login required");
 }
 
-$user_id = $_SESSION['user']['id'];
-
-// ✅ FETCH WATCHLIST
-$stmt = $conn->prepare("
-    SELECT c.*
-    FROM watchlist w
-    JOIN contents c ON w.content_id = c.id
-    WHERE w.user_id = ?
-    ORDER BY w.created_at DESC
-");
-
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
-
 include '../includes/header.php';
 ?>
 
-<div class="mt-20 max-w-[1400px] mx-auto px-6">
+<div class="mt-10 max-w-[1400px] mx-auto px-6">
 
     <h1 class="text-2xl md:text-3xl font-bold mb-4">
         My Watchlist
     </h1>
 
-    <?php if ($result->num_rows > 0): ?>
-
-        <div id="watchlist-grid">
-
-            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-6 gap-2 md:gap-4">
-                
-                <?php while($item = $result->fetch_assoc()): ?>
-
-                    <?php
-                        $content = $item;
-                        $forwatchlist = true;
-                        include '../includes/poster-card.php';
-                    ?>
-
-                <?php endwhile; ?>
-
-            </div>
-
+    <div id="watchlist-grid">
+        <div id="gridInner"
+            class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-6 gap-2 md:gap-4">
         </div>
+    </div>
 
-        <div id="empty-state"
-            class="hidden flex flex-col items-center justify-center py-20 text-center">
+    <div id="pagination"
+        class="flex justify-center gap-2 mt-8 flex-wrap">
+    </div>
 
-            <div class="text-5xl mb-4">🎬</div>
-
-            <h2 class="text-2xl font-semibold mb-2 text-white">
-                Your Watchlist is Empty
-            </h2>
-
-            <p class="text-white/60 mb-6">
-                Start adding movies you want to watch
-            </p>
-
-            <a href="../pages/movies.php"
-                class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-lg font-semibold transition">
-                Browse Movies →
-            </a>
-
-        </div>
-
-    <?php else: ?>
-
-        <div class="flex flex-col items-center justify-center py-20 text-center">
-
-            <div class="text-5xl mb-4">🎬</div>
-
-            <h2 class="text-2xl font-semibold mb-2 text-white">
-                Your Watchlist is Empty
-            </h2>
-
-            <p class="text-white/60 mb-6">
-                Start adding movies you want to watch
-            </p>
-
-            <a href="../pages/movies.php"
-                class="bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-lg font-semibold transition">
-                Browse Movies →
-            </a>
-
-        </div>
-
-    <?php endif; ?>
+    <div id="empty-state"
+        class="hidden flex flex-col items-center justify-center py-20 text-center">
+        <!-- keep your same empty UI -->
+    </div>
 
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+        const grid = document.getElementById("gridInner");
+        const pagination = document.getElementById("pagination");
+        const emptyState = document.getElementById("empty-state");
+
+        let currentPage = 1;
+        let totalPages = 1;
+
+        async function load(page = 1) {
+
+            const res = await fetch(`../api/watchlist_ajax.php?page=${page}`);
+            const json = await res.json();
+
+            grid.innerHTML = json.html;
+            totalPages = json.totalPages;
+            currentPage = page;
+
+            // EMPTY STATE
+            if (!json.html.trim()) {
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            renderPagination();
+
+            // 🔥 YOUR ORIGINAL ANIMATION BACK
+            if (typeof animateCards !== 'undefined') {
+                animateCards(grid, 30);
+            }
+        }
+
+        function renderPagination() {
+
+            let html = '';
+
+            html += `<button onclick="goPage(${currentPage - 1})"
+                class="px-3 py-1 bg-white/10 rounded ${currentPage === 1 ? 'opacity-30' : ''}">
+                Prev
+            </button>`;
+
+            for (let i = 1; i <= totalPages; i++) {
+
+                html += `<button onclick="goPage(${i})"
+                    class="px-3 py-1 rounded ${i === currentPage ? 'bg-blue-500' : 'bg-white/10'}">
+                    ${i}
+                </button>`;
+            }
+
+            html += `<button onclick="goPage(${currentPage + 1})"
+                class="px-3 py-1 bg-white/10 rounded ${currentPage === totalPages ? 'opacity-30' : ''}">
+                Next
+            </button>`;
+
+            pagination.innerHTML = html;
+        }
+
+        window.goPage = function(page) {
+            if (page < 1 || page > totalPages) return;
+            load(page);
+        }
+
+        load();
+
+    });
+</script>
