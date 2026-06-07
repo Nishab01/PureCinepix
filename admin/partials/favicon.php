@@ -1,0 +1,1 @@
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/admin-favicon-32.ico">
